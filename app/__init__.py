@@ -1,12 +1,16 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from app.config import Config
 
 db = SQLAlchemy()
 
-def create_app():
+def create_app(config_app=Config):
     app = Flask(__name__)
     
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
+    config = Config()
+    app.register_blueprint(user)
+    app.config.from_object(config_app)
+    
     db.init_app(app)
     
     with app.app_context():
@@ -14,3 +18,5 @@ def create_app():
     
     
     return app
+
+from app.routes import user
