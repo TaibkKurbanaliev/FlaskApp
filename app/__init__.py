@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from app.config import Config
 
 
 db = SQLAlchemy()
+migrate = Migrate()
 
 def create_app(config_app=Config):
     app = Flask(__name__)
@@ -22,6 +24,7 @@ def create_app(config_app=Config):
     app.config.from_object(config_app)
     
     db.init_app(app)
+    migrate.init_app(app, db)
     
     with app.app_context():
         db.create_all()
