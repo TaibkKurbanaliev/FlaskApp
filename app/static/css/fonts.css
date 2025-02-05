@@ -1,0 +1,14 @@
+/* Fonts Cormorant*/
+@font-face {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Cormorant/Cormorant-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/Cormorant/Cormorant-Bold.ttf');
+}
