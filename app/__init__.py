@@ -12,9 +12,6 @@ def create_app(config_app=Config):
     
     config = Config()
     
-    from .routes.main import main
-    app.register_blueprint(main)
-    
     from .routes.user import user
     app.register_blueprint(user)
     
