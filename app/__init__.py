@@ -1,11 +1,13 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_bcrypt import Bcrypt
 from app.config import Config
 
 
 db = SQLAlchemy()
 migrate = Migrate()
+bcrypt = Bcrypt()
 
 def create_app(config_app=Config):
     app = Flask(__name__)
