@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_assets import Environment
 from app.config import Config
 
 
@@ -10,6 +11,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
+assets = Environment()
 
 def create_app(config_app=Config):
     app = Flask(__name__)
@@ -27,6 +29,8 @@ def create_app(config_app=Config):
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
+    assets.init_app(app)
+    
     login_manager.login_view = 'user.login'
     login_manager.login_message = 'Вы не можете получить доступ к данной странице'
     login_manager.login_message_category = 'info'
